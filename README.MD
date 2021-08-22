@@ -5,7 +5,7 @@
 
 [Haunted] bindings for [Fable]
 
-Too stringy? check out [https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight](https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight)
+Too stringy? check out [vscode-template-fsharp-highlight](https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight)
 
 for html highlight in VSCode
 
