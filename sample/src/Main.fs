@@ -22,6 +22,11 @@ let private anotherOne () =
 let private app () =
     let state, setState = Haunted.useState 0
 
+    let log =
+        Haunted.useCallback ((fun x -> printfn "%s" x), [| state |])
+
+    log $"{state}"
+
     html
         $"""
         <div>Hello, World!</div>
