@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fable.Haunted", "src\Fable.Haunted.fsproj", "{0581F420-C901-4A48-895E-37BDA4037516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{0FD12F75-99DC-4BF6-9234-B6A3934C7FFE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App", "sample\src\App.fsproj", "{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0581F420-C901-4A48-895E-37BDA4037516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0581F420-C901-4A48-895E-37BDA4037516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0581F420-C901-4A48-895E-37BDA4037516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0581F420-C901-4A48-895E-37BDA4037516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C50BD445-4E9A-42C4-BBFE-A8C049CF1BE6} = {0FD12F75-99DC-4BF6-9234-B6A3934C7FFE}
+	EndGlobalSection
+EndGlobal

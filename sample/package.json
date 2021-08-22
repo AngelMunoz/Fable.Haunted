@@ -1,0 +1,19 @@
+{
+  "name": "flit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "dotnet fable src --watch --run snowpack dev",
+    "build": "dotnet fable snowpack build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit-html": "^1.4.1"
+  },
+  "devDependencies": {
+    "snowpack": "^3.8.6"
+  }
+}
