@@ -170,7 +170,7 @@ type Haunted() =
         (
             reducer: Reducer<'State, 'Action>,
             init: 'Init
-        ) : 'State * 'Action -> unit =
+        ) : ('State * ('Action -> unit)) =
         importMember "haunted"
 
     /// <summary>
@@ -183,7 +183,7 @@ type Haunted() =
             reducer: Reducer<'State, 'Action>,
             init: 'Init,
             ?initFn: 'Init -> 'State
-        ) : 'State * 'Action -> unit =
+        ) : ('State * ('Action -> unit)) =
         importMember "haunted"
 
     /// <summary>

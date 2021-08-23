@@ -2,6 +2,13 @@
 
 open Lit
 open Fable.Haunted
+open Fable.Haunted.Types
+
+type Msg =
+    | Increment
+    | Decrement
+    | Reset
+
 
 let private another
     (props: {| sample: string
@@ -20,12 +27,21 @@ let private anotherOne () =
 
 // we can use haunted to add state to our components
 let private app () =
-    let state, setState = Haunted.useState 0
+    let reducer: Reducer<int, Msg> =
+        fun state action ->
+            match action with
+            | Increment -> state + 1
+            | Decrement -> state - 1
+            | Reset -> 0
+
+    let state, dispatch = Haunted.useReducer (reducer, 0)
 
     let log =
         Haunted.useCallback ((fun x -> printfn "%s" x), [| state |])
 
     log $"{state}"
+
+
 
     html
         $"""
@@ -34,9 +50,9 @@ let private app () =
         <inner-component sample="lol" .property="{10}"></inner-component>
         {anotherOne ()}
         <p>Counter: {state}</p>
-        <button @click="{fun _ -> setState (state + 1)}">Increment</button>
-        <button @click="{fun _ -> setState (state - 1)}">Decrement</button>
-        <button @click="{fun _ -> setState 0}">Reset</button>
+        <button @click="{fun _ -> dispatch Increment}">Increment</button>
+        <button @click="{fun _ -> dispatch Decrement}">Decrement</button>
+        <button @click="{fun _ -> dispatch Reset}">Reset</button>
         """
 
 defineComponent "fable-app" (Haunted.Component app)
