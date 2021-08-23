@@ -16,7 +16,7 @@
     <PackageProjectUrl>https://github.com/AngelMunoz/Fable.Haunted</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.0-beta-001</Version>
+    <Version>1.0.0-beta-002</Version>
   </PropertyGroup>
 
   <ItemGroup>
