@@ -44,8 +44,8 @@ let defineComponent (name: string) (comp: obj) : unit = importMember "./interop.
 ///
 ///       // the rest of your function
 /// </example>
-[<Emit("this.dispatchEvent($0)")>]
-let dispatchEvent (event: Event) : unit = jsNative
+[<Emit("$1.dispatchEvent($0)")>]
+let dispatchEvent (event: Event) (this: obj) : unit = jsNative
 
 /// <summary>
 /// A simple static class that serves to provide signature overloads for [Haunted](https://hauntedhooks.netlify.app/) functions
@@ -250,3 +250,18 @@ type Haunted() =
     /// </example>
     [<Emit("new CustomEvent($0, $1)")>]
     static member createCustomEvent<'T>(name: string, ?opts: obj) : Browser.Types.CustomEvent<'T> = jsNative
+
+    /// <summary>
+    /// Returns `this`, use it to fix a reference to `this` in a function.
+    /// </summary>
+    /// <remarks>This will not work on arrow functions (i.e. Virtual components)</remarks>
+    /// <example>
+    ///     let app () =
+    ///         // that will point to the "app()" scope
+    ///         let that = Haunted.getThis
+    ///         let onMyEvent _ =
+    ///             console.log(that)
+    ///     html $"""&lt;button @click={onMyEvent}>&lt;/button>"""
+    /// </example>
+    [<Emit("this")>]
+    static member getThis: obj = jsNative
