@@ -1,29 +1,42 @@
 ﻿module Main
 
+open Browser.Types
 open Lit
 open Fable.Haunted
 open Fable.Haunted.Types
+
+type EventTarget with
+    member this.Value = (this :?> HTMLInputElement).value
 
 type Msg =
     | Increment
     | Decrement
     | Reset
 
-
-let private another
+let private inner_component
     (props: {| sample: string
                property: string option |})
     =
-    html $"""<div>An inner component! {props.sample} - {props.property}</div>"""
+    html $"""<p>An inner component! {props.sample} - {props.property}</p>"""
 
 // defineComponent registers a Custom Element so you don't need to actually
 // call this function inside any component, you can use the component itself
-defineComponent "inner-component" (Haunted.Component(another, {| observedAttributes = [| "sample" |] |}))
+defineComponent "inner-component" (Haunted.Component(inner_component, {| observedAttributes = [| "sample" |] |}))
+
+[<VirtualComponent>]
+let virtual_component (props: {| sample: string |}) =
+    let state, setState = Haunted.useState "I'm so virtual!"
+    html $"""
+        <div>
+            <p>A virtual component can keep its own state</p>
+            <input value={state} @keyup={fun (ev: Event) -> ev.target.Value |> setState}>
+            <p>External message: {props.sample}</p>
+            <p>Internal message: {state}</p>
+        </div>"""
 
 // by itself lit-html functions are stateless
-let private anotherOne () =
+let private not_a_component() =
     html $"""<div>A standard Lit Template!</div>"""
-
 
 // we can use haunted to add state to our components
 let private app () =
@@ -41,14 +54,13 @@ let private app () =
 
     log $"{state}"
 
-
-
     html
         $"""
-        <div>Hello, World!</div>
+        <h1>Hello, World!</h1>
         <!--You can observe attributes or even properties thanks to lit's templating engine -->
         <inner-component sample="lol" .property="{10}"></inner-component>
-        {anotherOne ()}
+        {virtual_component {| sample = "Hi from above!" |}}
+        {not_a_component()}
         <p>Counter: {state}</p>
         <button @click="{fun _ -> dispatch Increment}">Increment</button>
         <button @click="{fun _ -> dispatch Decrement}">Decrement</button>

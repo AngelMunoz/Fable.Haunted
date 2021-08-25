@@ -2,20 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>
     <WarnOn>3390;$(WarnOn)</WarnOn>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Copyright 2020 Angel D. Munoz.</Copyright>
-    <Authors>Angel D. Munoz</Authors>
-    
-    <RepositoryType>git</RepositoryType>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <PackageTags>fable;lit-element;elmish.lit;lit;</PackageTags>
-    <RepositoryUrl>https://github.com/AngelMunoz/Fable.Haunted.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/AngelMunoz/Fable.Haunted</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryType>git</RepositoryType>
+
     <Version>1.0.0-beta-004</Version>
   </PropertyGroup>
 
@@ -31,6 +20,10 @@
     <PackageReference Include="Fable.Lit" Version="1.0.0-beta-001" />
     <PackageReference Include="Fable.Browser.Dom" Version="2.4.4" />
     <PackageReference Include="Fable.Core" Version="3.2.8" />
+  </ItemGroup>  
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fable.HauntedPlugins\Fable.HauntedPlugins.fsproj" />
   </ItemGroup>
 
 </Project>

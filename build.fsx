@@ -28,21 +28,23 @@ let output = "./dist"
 Target.initEnvironment ()
 Target.create "Clean" (fun _ -> !! "dist" |> Shell.cleanDirs)
 
-Target.create
-    "Default"
-    (fun _ ->
-        let result = Target.runSimple "Clean" []
+let publish proj =
+    let result = Target.runSimple "Clean" []
 
-        match result.Error with
-        | Some err -> eprintfn "%O" err
-        | None ->
-            DotNet.pack
-                (fun opts ->
-                    { opts with
-                          Configuration = DotNet.BuildConfiguration.Release
-                          OutputPath = Some $"{output}" })
-                "src")
+    match result.Error with
+    | Some err -> eprintfn "%O" err
+    | None ->
+        DotNet.pack
+            (fun opts ->
+                { opts with
+                      Configuration = DotNet.BuildConfiguration.Release
+                      OutputPath = Some $"{output}" })
+            "src/" + proj)
 
+Target.create "Default" (fun _ -> publish "Fable.Haunted")
 "Clean" ==> "Default"
+
+Target.create "Plugins" (fun _ -> publish "Fable.HauntedPlugins")
+"Clean" ==> "Plugins"
 
 Target.runOrDefault "Default"

@@ -30,7 +30,8 @@ open Fable.Haunted.Types
 ///           &lt;my-greeter .name={name}&gt;&lt;/my-greeter&gt;
 ///        """
 /// </example>
-let defineComponent (name: string) (comp: obj) : unit = importMember "./interop.js"
+[<Emit("customElements.define($0, $1)")>]
+let defineComponent (name: string) (comp: obj) : unit = jsNative
 
 /// <summary>
 /// dispatchEvent **must** be caled inside a render function (it uses `this`) to correctly dispatch events
