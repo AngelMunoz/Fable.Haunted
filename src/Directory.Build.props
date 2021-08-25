@@ -3,7 +3,7 @@
         <PackageIcon>fable_logo.png</PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright 2020 Angel D. Munoz.</Copyright>
-        <Authors>Angel D. Munoz</Authors>
+        <Authors>Angel D. Munoz, Alfonso Garcia-Caro</Authors>
 
         <RepositoryType>git</RepositoryType>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>

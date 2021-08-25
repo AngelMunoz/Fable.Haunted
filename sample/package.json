@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "dotnet fable src -o public/dist --exclude Fable.HauntedPlugins --watch --run snowpack dev"
+    "start": "dotnet fable src --exclude Fable.HauntedPlugins --watch --run snowpack dev"
   },
   "keywords": [],
   "author": "",

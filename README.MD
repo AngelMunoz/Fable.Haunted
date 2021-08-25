@@ -6,43 +6,82 @@
 [Haunted] bindings for [Fable]
 
 Too stringy? check out [vscode-template-fsharp-highlight](https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight)
-
 for html highlight in VSCode
 
-```fsharp
+Check the library in action [here](https://github.com/AngelMunoz/fable-lit-sample)
 
+```fsharp
+module Main
+
+open Browser.Types
 open Lit
 open Fable.Haunted
+open Fable.Haunted.Types
 
-let another
+type EventTarget with
+    member this.Value = (this :?> HTMLInputElement).value
+
+type Msg =
+    | Increment
+    | Decrement
+    | Reset
+
+let private inner_component
     (props: {| sample: string
                property: string option |})
     =
-    html $"""<div>An inner component! {props.sample} - {props.property}</div>"""
+    html $"""<p>An inner component! {props.sample} - {props.property}</p>"""
 
 // defineComponent registers a Custom Element so you don't need to actually
 // call this function inside any component, you can use the component itself
-defineComponent "inner-component" (Haunted.Component(another, {| observedAttributes = [| "sample" |] |}))
+defineComponent "inner-component" (Haunted.Component(inner_component, {| observedAttributes = [| "sample" |] |}))
 
-// by itself lit-html functions are stateless
-let anotherOne () =
-    html $"""<div>A standard Lit Template!</div>"""
-
-
-// we can use haunted to add state to our components
-let app () =
-    let state, setState = Haunted.useState 0
+/// Virtual Components don't have a tag by themselves
+/// but they allow you to have state in them
+[<VirtualComponent>]
+let virtual_component (props: {| sample: string |}) =
+    let state, setState = Haunted.useState "I'm so virtual!"
 
     html
         $"""
-        <div>Hello, World!</div>
+        <div>
+            <p>A virtual component can keep its own state</p>
+            <input value={state} @keyup={fun (ev: Event) -> ev.target.Value |> setState}>
+            <p>External message: {props.sample}</p>
+            <p>Internal message: {state}</p>
+        </div>"""
+
+// by itself lit-html functions are stateless
+let private not_a_component () =
+    html $"""<div>A standard Lit Template!</div>"""
+
+// we can use haunted to add state to our components
+let private app () =
+    let reducer: Reducer<int, Msg> =
+        fun state action ->
+            match action with
+            | Increment -> state + 1
+            | Decrement -> state - 1
+            | Reset -> 0
+
+    let state, dispatch = Haunted.useReducer (reducer, 0)
+
+    let log =
+        Haunted.useCallback ((fun x -> printfn "%s" x), [| state |])
+
+    log $"{state}"
+
+    html
+        $"""
+        <h1>Hello, World!</h1>
         <!--You can observe attributes or even properties thanks to lit's templating engine -->
         <inner-component sample="lol" .property="{10}"></inner-component>
-        {anotherOne ()}
+        {virtual_component {| sample = "Hi from above!" |}}
+        {not_a_component ()}
         <p>Counter: {state}</p>
-        <button @click="{fun _ -> setState (state + 1)}">Increment</button>
-        <button @click="{fun _ -> setState (state - 1)}">Decrement</button>
-        <button @click="{fun _ -> setState 0}">Reset</button>
+        <button @click="{fun _ -> dispatch Increment}">Increment</button>
+        <button @click="{fun _ -> dispatch Decrement}">Decrement</button>
+        <button @click="{fun _ -> dispatch Reset}">Reset</button>
         """
 
 defineComponent "fable-app" (Haunted.Component app)

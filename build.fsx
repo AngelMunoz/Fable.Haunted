@@ -8,7 +8,6 @@
 #r "nuget: System.Reactive"
 
 open System
-open System.IO.Compression
 open Fake.Core
 open Fake.DotNet
 open Fake.IO
@@ -29,22 +28,22 @@ Target.initEnvironment ()
 Target.create "Clean" (fun _ -> !! "dist" |> Shell.cleanDirs)
 
 let publish proj =
-    let result = Target.runSimple "Clean" []
+    DotNet.pack
+        (fun opts ->
+            { opts with
+                  Configuration = DotNet.BuildConfiguration.Release
+                  OutputPath = Some $"{output}" })
+        ("src/" + proj)
 
-    match result.Error with
-    | Some err -> eprintfn "%O" err
-    | None ->
-        DotNet.pack
-            (fun opts ->
-                { opts with
-                      Configuration = DotNet.BuildConfiguration.Release
-                      OutputPath = Some $"{output}" })
-            "src/" + proj)
-
-Target.create "Default" (fun _ -> publish "Fable.Haunted")
-"Clean" ==> "Default"
+Target.create "Haunted" (fun _ -> publish "Fable.Haunted")
+"Clean" ==> "Haunted"
 
 Target.create "Plugins" (fun _ -> publish "Fable.HauntedPlugins")
 "Clean" ==> "Plugins"
+
+Target.create "Default" ignore
+
+"Clean" ==> "Haunted" ==> "Plugins" ==> "Default"
+
 
 Target.runOrDefault "Default"

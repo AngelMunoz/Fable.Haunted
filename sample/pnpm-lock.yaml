@@ -1,10 +1,12 @@
 lockfileVersion: 5.3
 
 specifiers:
+  haunted: ^4.8.2
   lit-html: ^1.4.1
   snowpack: ^3.8.6
 
 dependencies:
+  haunted: 4.8.2
   lit-html: 1.4.1
 
 devDependencies:
@@ -32,6 +34,10 @@ packages:
       chalk: 2.4.2
       js-tokens: 4.0.0
     dev: true
+
+  /@lit/reactive-element/1.0.0-rc.3:
+    resolution: {integrity: sha512-Rs2px1keOQUNJUo5B+WExl5v244ZNCiN/iMVNO9evFdJjAdWCIupR/p14zRPkNHsciRBELLTcOZ379cI9O6PDg==}
+    dev: false
 
   /@npmcli/arborist/2.8.2:
     resolution: {integrity: sha512-6E1XJ0YXBaI9J+25gcTF110MGNx3jv6npr4Rz1U0UAqkuVV7bbDznVJvNqi6F0p8vgrE+Smf9jDTn1DR+7uBjQ==}
@@ -1147,6 +1153,13 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /haunted/4.8.2:
+    resolution: {integrity: sha512-+auNzzp1AjzZblPrY3oV8PuTGAcK6I9ExBfFnhR+6HINVFeM7BR+jPDAKxa7NF22RBbu5McBhbp+t0zO0rqrqQ==}
+    dependencies:
+      '@lit/reactive-element': 1.0.0-rc.3
+      lit-html: 1.4.1
+    dev: false
 
   /hosted-git-info/4.0.2:
     resolution: {integrity: sha512-c9OGXbZ3guC/xOlCg1Ci/VgWlwsqDv1yMQL1CWqXDL0hDjXuNcq0zuR4xqPSuasI3kqFDhqSyTjREz5gzq0fXg==}
