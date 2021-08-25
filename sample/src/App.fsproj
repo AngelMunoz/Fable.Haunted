@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fable.Haunted.fsproj" />
+    <ProjectReference Include="..\..\src\Fable.Haunted\Fable.Haunted.fsproj" />
   </ItemGroup>
 
 </Project>
