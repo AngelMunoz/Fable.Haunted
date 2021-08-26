@@ -43,7 +43,7 @@ Target.create "Plugins" (fun _ -> publish "Fable.HauntedPlugins")
 
 Target.create "Default" ignore
 
-"Clean" ==> "Haunted" ==> "Plugins" ==> "Default"
+"Clean" ==> "Plugins" ==> "Haunted" ==> "Default"
 
 
 Target.runOrDefault "Default"
