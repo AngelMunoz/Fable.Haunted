@@ -1,4 +1,4 @@
-namespace Fable.Haunted
+namespace Haunted
 
 open Fable.AST
 

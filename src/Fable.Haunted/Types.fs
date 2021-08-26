@@ -1,4 +1,4 @@
-namespace Fable.Haunted.Types
+namespace Haunted.Types
 
 /// <summary>
 /// To be used with `useContext`, once context exists, you can use it to register

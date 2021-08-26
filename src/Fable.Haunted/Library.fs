@@ -1,14 +1,10 @@
-﻿[<AutoOpen>]
-module Fable.Haunted.Haunted
+﻿module Haunted
 
 open Browser.Types
 
 open Fable.Core
 open Fable.Core.JsInterop
-
-open Lit
-
-open Fable.Haunted.Types
+open Haunted.Types
 
 
 /// <summary>
@@ -100,19 +96,6 @@ type Haunted() =
         importMember "haunted"
 
     /// <summary>
-    /// A helper function that returns a context value.
-    /// </summary>
-    /// <example>
-    ///     let theme = Haunted.createContext "dark"
-    ///
-    ///     // register the provider and the consumer
-    ///     defineComponent 'theme-provider' theme.Provider
-    ///     defineComponent 'theme-provider' theme.Consumer
-    ///     // use yout context
-    /// </example>
-    static member createContext<'T>(value: 'T) : Context<'T> = importMember "haunted"
-
-    /// <summary>
     /// Grabs the context value from the closest provider above and updates your component, the consumer, whenever the provider changes the value.
     /// useContext currently only works with custom element components.
     /// </summary>
@@ -194,26 +177,6 @@ type Haunted() =
     /// .current and since changes to it are mutations, no rerender is required to view the updated value in your component's code (e.g. listeners, callbacks, effects).
     /// </summary>
     static member useRef<'T>(value: 'T) : Ref<'T> = importMember "haunted"
-
-    /// <summary>
-    /// Haunted also has the concept of virtual components. These are components that are not defined as a tag.
-    /// Instead they're defined as functions that can be called from within another template.
-    /// They have their own state and will rerender when that state changes without causing any parent components to rerender.
-    /// </summary>
-    static member Virtual(renderFn: obj) : TemplateResult = import "virtual" "haunted"
-
-    /// <summary>
-    /// Components are functions that contain state and return HTML via lit-html or hyperHTML.
-    /// Through the component() and virtual() they become connected to a lifecycle that keeps the HTML up-to-date when state changes.
-    /// </summary>
-    static member Component(renderFn: obj) : TemplateResult = import "component" "haunted"
-
-    /// <summary>
-    /// Components are functions that contain state and return HTML via lit-html or hyperHTML.
-    /// Through the component() and virtual() they become connected to a lifecycle that keeps the HTML up-to-date when state changes.
-    /// </summary>
-    static member Component(renderFn: obj, ?opts: obj) : TemplateResult = import "component" "haunted"
-
 
     /// <summary>
     ///  Creates a new Javascript [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)
