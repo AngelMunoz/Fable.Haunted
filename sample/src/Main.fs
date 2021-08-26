@@ -30,7 +30,7 @@ defineComponent "inner-component" (Haunted.Component(inner_component, {| observe
 /// but in some conditons fable will emit an arrow function so this will not be attached
 /// and your dicpatch might fail
 [<VirtualComponent>]
-let virtual_component (props: {| sample: string |}) =
+let virtual_component (name: string) (age: int) =
     let state, setState = Haunted.useState "I'm so virtual!"
 
     html
@@ -38,7 +38,7 @@ let virtual_component (props: {| sample: string |}) =
         <div>
             <p>A virtual component can keep its own state</p>
             <input value={state} @keyup={fun (ev: Event) -> ev.target.Value |> setState}>
-            <p>External message: {props.sample}</p>
+            <p>External message: {name} is {age} year(s) old</p>
             <p>Internal message: {state}</p>
         </div>"""
 
@@ -67,7 +67,7 @@ let private app () =
         <h1>Hello, World!</h1>
         <!--You can observe attributes or even properties thanks to lit's templating engine -->
         <inner-component sample="lol" .property="{10}"></inner-component>
-        {virtual_component {| sample = "Hi from above!" |}}
+        {virtual_component "John" 45}
         {not_a_component ()}
         <p>Counter: {state}</p>
         <button @click="{fun _ -> dispatch Increment}">Increment</button>
