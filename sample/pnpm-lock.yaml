@@ -2,12 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   haunted: ^4.8.2
-  lit-html: ^1.4.1
+  lit-html: 2.0.0-rc.4
   snowpack: ^3.8.6
 
 dependencies:
   haunted: 4.8.2
-  lit-html: 1.4.1
+  lit-html: 2.0.0-rc.4
 
 devDependencies:
   snowpack: 3.8.6
@@ -294,6 +294,10 @@ packages:
     dependencies:
       '@types/node': 16.7.1
     dev: true
+
+  /@types/trusted-types/1.0.6:
+    resolution: {integrity: sha512-230RC8sFeHoT6sSUlRO6a8cAnclO06eeiq1QDfiv2FGCLWFvvERWgwIQD4FWqD9A69BN7Lzee4OXwoMVnnsWDw==}
+    dev: false
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -1491,6 +1495,12 @@ packages:
 
   /lit-html/1.4.1:
     resolution: {integrity: sha512-B9btcSgPYb1q4oSOb/PrOT6Z/H+r6xuNzfH4lFli/AWhYwdtrgQkQWBbIc6mdnf6E2IL3gDXdkkqNktpU0OZQA==}
+    dev: false
+
+  /lit-html/2.0.0-rc.4:
+    resolution: {integrity: sha512-WSLGu3vxq7y8q/oOd9I3zxyBELNLLiDk6gAYoKK4PGctI5fbh6lhnO/jVBdy0PV/vTc+cLJCA/occzx3YoNPeg==}
+    dependencies:
+      '@types/trusted-types': 1.0.6
     dev: false
 
   /loader-utils/1.4.0:
