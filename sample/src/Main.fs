@@ -2,8 +2,9 @@
 
 open Browser.Types
 open Lit
-open Fable.Haunted
-open Fable.Haunted.Types
+open Haunted
+open Haunted.Types
+open Lit.Haunted
 
 type EventTarget with
     member this.Value = (this :?> HTMLInputElement).value
