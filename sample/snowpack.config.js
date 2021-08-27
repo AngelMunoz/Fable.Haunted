@@ -20,8 +20,7 @@ module.exports = {
   },
   packageOptions: {
     /* ... */
-    source: 'remote',
-    types: true
+    source: 'remote'
   },
   devOptions: {
     /* ... */

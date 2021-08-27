@@ -1,13 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  haunted: ^4.8.2
-  lit-html: 2.0.0-rc.4
   snowpack: ^3.8.6
-
-dependencies:
-  haunted: 4.8.2
-  lit-html: 2.0.0-rc.4
 
 devDependencies:
   snowpack: 3.8.6
@@ -34,10 +28,6 @@ packages:
       chalk: 2.4.2
       js-tokens: 4.0.0
     dev: true
-
-  /@lit/reactive-element/1.0.0-rc.3:
-    resolution: {integrity: sha512-Rs2px1keOQUNJUo5B+WExl5v244ZNCiN/iMVNO9evFdJjAdWCIupR/p14zRPkNHsciRBELLTcOZ379cI9O6PDg==}
-    dev: false
 
   /@npmcli/arborist/2.8.2:
     resolution: {integrity: sha512-6E1XJ0YXBaI9J+25gcTF110MGNx3jv6npr4Rz1U0UAqkuVV7bbDznVJvNqi6F0p8vgrE+Smf9jDTn1DR+7uBjQ==}
@@ -294,10 +284,6 @@ packages:
     dependencies:
       '@types/node': 16.7.1
     dev: true
-
-  /@types/trusted-types/1.0.6:
-    resolution: {integrity: sha512-230RC8sFeHoT6sSUlRO6a8cAnclO06eeiq1QDfiv2FGCLWFvvERWgwIQD4FWqD9A69BN7Lzee4OXwoMVnnsWDw==}
-    dev: false
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -1158,13 +1144,6 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /haunted/4.8.2:
-    resolution: {integrity: sha512-+auNzzp1AjzZblPrY3oV8PuTGAcK6I9ExBfFnhR+6HINVFeM7BR+jPDAKxa7NF22RBbu5McBhbp+t0zO0rqrqQ==}
-    dependencies:
-      '@lit/reactive-element': 1.0.0-rc.3
-      lit-html: 1.4.1
-    dev: false
-
   /hosted-git-info/4.0.2:
     resolution: {integrity: sha512-c9OGXbZ3guC/xOlCg1Ci/VgWlwsqDv1yMQL1CWqXDL0hDjXuNcq0zuR4xqPSuasI3kqFDhqSyTjREz5gzq0fXg==}
     engines: {node: '>=10'}
@@ -1492,16 +1471,6 @@ packages:
   /lines-and-columns/1.1.6:
     resolution: {integrity: sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=}
     dev: true
-
-  /lit-html/1.4.1:
-    resolution: {integrity: sha512-B9btcSgPYb1q4oSOb/PrOT6Z/H+r6xuNzfH4lFli/AWhYwdtrgQkQWBbIc6mdnf6E2IL3gDXdkkqNktpU0OZQA==}
-    dev: false
-
-  /lit-html/2.0.0-rc.4:
-    resolution: {integrity: sha512-WSLGu3vxq7y8q/oOd9I3zxyBELNLLiDk6gAYoKK4PGctI5fbh6lhnO/jVBdy0PV/vTc+cLJCA/occzx3YoNPeg==}
-    dependencies:
-      '@types/trusted-types': 1.0.6
-    dev: false
 
   /loader-utils/1.4.0:
     resolution: {integrity: sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==}

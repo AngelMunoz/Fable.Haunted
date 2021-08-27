@@ -9,10 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "haunted": "^4.8.2",
-    "lit-html": "2.0.0-rc.4"
-  },
   "devDependencies": {
     "snowpack": "^3.8.6"
   }
