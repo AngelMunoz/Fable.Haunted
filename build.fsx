@@ -35,15 +35,8 @@ let publish proj =
                   OutputPath = Some $"{output}" })
         ("src/" + proj)
 
-Target.create "Haunted" (fun _ -> publish "Fable.Haunted")
-"Clean" ==> "Haunted"
+Target.create "Default" (fun _ -> publish "Fable.Haunted")
 
-Target.create "Plugins" (fun _ -> publish "Fable.HauntedPlugins")
-"Clean" ==> "Plugins"
-
-Target.create "Default" ignore
-
-"Clean" ==> "Plugins" ==> "Haunted" ==> "Default"
-
+"Clean" ==> "Default"
 
 Target.runOrDefault "Default"

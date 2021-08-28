@@ -5,11 +5,10 @@
     <IsPackable>true</IsPackable>
     <WarnOn>3390;$(WarnOn)</WarnOn>
 
-    <Version>1.0.0-beta-005</Version>
+    <Version>1.0.0-beta-006</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Types.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
   <ItemGroup>
@@ -17,13 +16,8 @@
   </ItemGroup>  
 
   <ItemGroup>
-    <PackageReference Include="Fable.Lit" Version="1.0.0-beta-001" />
+    <PackageReference Include="Fable.Lit" Version="1.0.0-beta-002" />
     <PackageReference Include="Fable.Browser.Dom" Version="2.4.4" />
-    <PackageReference Include="Fable.Core" Version="3.2.8" />
-  </ItemGroup>  
-
-  <ItemGroup>
-    <ProjectReference Include="..\Fable.HauntedPlugins\Fable.HauntedPlugins.fsproj" />
+    <PackageReference Include="Fable.Core" Version="3.3.0-beta-001" />
   </ItemGroup>
-
 </Project>

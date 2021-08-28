@@ -9,11 +9,6 @@
   <ItemGroup>
     <Compile Include="Main.fs" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Elmish.Lit" Version="1.0.0-beta-001" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fable.Haunted\Fable.Haunted.fsproj" />
   </ItemGroup>
