@@ -9,22 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Types.fs" />
     <Compile Include="Library.fs" />
-    <Compile Include="Lit.fs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js; **\*.mjs" PackagePath="fable\" />
   </ItemGroup>  
 
   <ItemGroup>
-    <PackageReference Include="Fable.Lit" Version="1.0.0-beta-001" />
+    <PackageReference Include="Fable.Lit" Version="1.0.0-beta-002" />
     <PackageReference Include="Fable.Browser.Dom" Version="2.4.4" />
-    <PackageReference Include="Fable.Core" Version="3.2.8" />
-  </ItemGroup>  
-
-  <ItemGroup>
-    <ProjectReference Include="..\Fable.HauntedPlugins\Fable.HauntedPlugins.fsproj" />
+    <PackageReference Include="Fable.Core" Version="3.3.0-beta-001" />
   </ItemGroup>
-
 </Project>
