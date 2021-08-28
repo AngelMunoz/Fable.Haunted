@@ -8,6 +8,12 @@
     <Version>1.0.0-beta-006</Version>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="lit-html" Version="&gt;= 2.0.0 &lt; 3.0.0" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="Library.fs" />
   </ItemGroup>
