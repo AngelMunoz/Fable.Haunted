@@ -36,21 +36,6 @@ let private inner_component
 // call this function inside any component, you can use the component itself
 defineComponent "inner-component" (Haunted.Component(inner_component, {| observedAttributes = [| "sample" |] |}))
 
-/// Virtual Components don't have a tag by themselves
-/// but they allow you to have state in them
-[<VirtualComponent>]
-let virtual_component (props: {| sample: string |}) =
-    let state, setState = Haunted.useState "I'm so virtual!"
-
-    html
-        $"""
-        <div>
-            <p>A virtual component can keep its own state</p>
-            <input value={state} @keyup={fun (ev: Event) -> ev.target.Value |> setState}>
-            <p>External message: {props.sample}</p>
-            <p>Internal message: {state}</p>
-        </div>"""
-
 // by itself lit-html functions are stateless
 let private not_a_component () =
     html $"""<div>A standard Lit Template!</div>"""
@@ -76,7 +61,6 @@ let private app () =
         <h1>Hello, World!</h1>
         <!--You can observe attributes or even properties thanks to lit's templating engine -->
         <inner-component sample="lol" .property="{10}"></inner-component>
-        {virtual_component {| sample = "Hi from above!" |}}
         {not_a_component ()}
         <p>Counter: {state}</p>
         <button @click="{fun _ -> dispatch Increment}">Increment</button>
