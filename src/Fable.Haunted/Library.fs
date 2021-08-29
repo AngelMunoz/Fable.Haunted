@@ -82,6 +82,72 @@ module Types =
     /// </summary>
     type Reducer<'State, 'Action> = 'State -> 'Action -> 'State
 
+    /// <summary>
+    /// A Reactive Controller is an object that enables sub-component code organization and reuse
+    /// by aggregating the state, behavior, and lifecycle hooks related to a single feature.
+    /// </summary>
+    /// <remarks>
+    /// Controllers are added to a host component, or other object that implements the ReactiveControllerHost interface, via the addController() method.
+    /// They can hook their host components's lifecycle by implementing one or more of the lifecycle callbacks,
+    /// or initiate an update of the host component by calling requestUpdate() on the host.
+    /// </remarks>
+    [<Interface>]
+    type ReactiveController =
+        /// <summary>
+        /// Called when the host is connected to the component tree.
+        /// For custom element hosts, this corresponds to the connectedCallback() lifecycle,
+        /// which is only called when the component is connected to the document.
+        /// </summary>
+        abstract member hostConnected : unit -> unit
+
+        /// <summary>
+        /// Called when the host is disconnected from the component tree.
+        /// For custom element hosts, this corresponds to the disconnectedCallback() lifecycle,
+        /// which is called the host or an ancestor component is disconnected from the document.
+        /// </summary>
+        abstract member hostDisconnected : unit -> unit
+
+        /// <summary>
+        /// Called during the client-side host update, just before the host calls its own update.
+        /// </summary>
+        /// <remarks>
+        /// Code in update() can depend on the DOM as it is not called in server-side rendering.
+        /// </remarks>
+        abstract member hostUpdate : unit -> unit
+
+        /// <summary>
+        /// Called after a host update, just before the host calls firstUpdated and updated. It is not called in server-side rendering.
+        /// </summary>
+        abstract member hostUpdated : unit -> unit
+
+    /// <summary>
+    /// An object that can host Reactive Controllers and call their lifecycle callbacks.
+    /// </summary>
+    [<Interface>]
+    type ReactiveControllerHost =
+
+        /// <summary>
+        /// Returns a Promise that resolves when the host has completed updating.
+        /// The Promise value is a boolean that is true if the element completed the update without triggering another update.
+        /// The Promise result is false if a property was set inside updated().
+        /// If the Promise is rejected, an exception was thrown during the update.
+        /// </summary>
+        abstract member updateComplete : bool
+
+        /// <summary>
+        /// Adds a controller to the host, which sets up the controller's lifecycle methods to be called with the host's lifecycle.
+        /// </summary>
+        abstract member addController : ReactiveController -> unit
+
+        /// Removes a controller from the host.
+        abstract member removeController : ReactiveController -> unit
+
+        /// <summary>
+        /// Requests a host update which is processed asynchronously. The update can be waited on via the updateComplete property.
+        /// </summary>
+        abstract member requestUpdate : unit -> unit
+
+
 open Types
 
 let private litRender renderFn container = import "render" "lit-html"
@@ -268,6 +334,22 @@ type Haunted() =
     /// .current and since changes to it are mutations, no rerender is required to view the updated value in your component's code (e.g. listeners, callbacks, effects).
     /// </summary>
     static member useRef<'T>(value: 'T) : Ref<'T> = importMember "haunted"
+
+    /// <summary>
+    /// Creates and stores a stateful ReactiveController instance and provides it
+    /// with a ReactiveControllerHost that drives the controller lifecycle.
+    /// Use this hook to convert a ReactiveController into a Haunted hook.
+    /// </summary>
+    /// <param name="createController">
+    /// A function that creates a controller instance.
+    /// This function is given a HauntedControllerHost to pass to the controller.
+    /// The create function is only called once per component.
+    /// </param>
+    /// <returns>the controller instance.</returns>
+    static member useController<'T when 'T :> ReactiveController>
+        (createController: ReactiveControllerHost -> ReactiveController)
+        : 'T =
+        importMember "haunted"
 
     /// <summary>
     ///  Creates a new Javascript [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)
