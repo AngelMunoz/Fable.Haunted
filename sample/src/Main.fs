@@ -5,6 +5,7 @@ open Lit
 open Haunted
 open Haunted.Types
 open Fable.Core
+open Controllers
 
 JsInterop.importSideEffects "./styles.css"
 
@@ -24,8 +25,20 @@ let private custom_element
         props.complexValues
         |> Option.defaultValue {| message = "default message" |}
 
+    let mouseCtrl =
+        Haunted.useController<MouseController> (fun host -> MouseController(host) :> ReactiveController)
+
     let sample = defaultArg props.sample "default sample"
-    html $"<p>A! {sample} - {value.message}</p>"
+
+    html
+        $"""
+        <p>A! {sample} - {value.message}</p>
+        <p>
+            You can use reactive controllers too!
+            <br>
+            Mouse Position: x - {mouseCtrl.x}, y - {mouseCtrl.y}
+        </p>
+    """
 
 // defineComponent registers a Custom Element so you don't need to actually
 // call this function inside any component, you can use the component itself
@@ -64,6 +77,9 @@ let private app () =
     let log =
         Haunted.useCallback ((fun x -> printfn "%s" x), [| state |])
 
+    let clockCtrl =
+        Haunted.useController<ClockController> (fun host -> ClockController(host, 1000) :> ReactiveController)
+
     log $"{state}"
 
     let complex =
@@ -71,7 +87,7 @@ let private app () =
 
     html
         $"""
-        <h1>Hello, World!</h1>
+        <h1>Hello, World! - {clockCtrl.time.ToLongTimeString()}</h1>
         <!--You can observe attributes or even properties thanks to lit's templating engine -->
         <inner-component sample={$"Attribute value: {state}"} .complexValues={complex}></inner-component>
         {aStatelessFunction "value" state}

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Controllers.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
