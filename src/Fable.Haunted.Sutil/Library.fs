@@ -6,17 +6,6 @@ open Fable.Core.JsInterop
 open Haunted.Types
 open Sutil.DOM
 
-let mkContext (element: SutilNode) (parent: Node) =
-    let gen = Sutil.Helpers.makeIdGenerator ()
-
-    { Document = parent.ownerDocument
-      Parent = DomNode parent
-      Previous = EmptyNode
-      Action = Replace(element, parent)
-      StyleSheet = None
-      Debug = false
-      MakeName = fun baseName -> sprintf "%s-%d" baseName (gen ()) }
-
 let private haunted
     (opts: {| render: obj -> obj -> unit |})
     : {| ``component``: obj -> obj option -> SutilElement
@@ -29,10 +18,8 @@ let private customHaunted<'T> : {| ``component``: obj -> option<obj> -> SutilEle
     haunted
         {| render =
                fun sutilElement container ->
-                   let container = (container :?> HTMLElement)
-                   let sutilEl = (sutilElement :?> SutilElement)
-
-                   mountOn sutilEl container |> ignore |}
+                   mountOn (exclusive (unbox sutilElement)) (unbox container)
+                   |> ignore |}
 
 type Haunted with
     /// <summary>
