@@ -2,26 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>
     <WarnOn>3390;$(WarnOn)</WarnOn>
 
-    <Version>1.0.0-beta-008</Version>
+    <Version>1.0.0-beta-001</Version>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js; **\*.mjs" PackagePath="fable\" />
-  </ItemGroup>
-
+  </ItemGroup>  
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="haunted" Version="&gt;= 4.8.2 &lt; 5.0.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="lit-html" Version="&gt;= 2.0.0 &lt; 3.0.0" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="Library.fs" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Fable.Browser.Dom" Version="2.4.4" />
+    <ProjectReference Include="..\Fable.Haunted\Fable.Haunted.fsproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fable.Lit" Version="1.0.0-beta-004" />
+  </ItemGroup>
+
 </Project>

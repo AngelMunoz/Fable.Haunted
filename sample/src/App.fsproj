@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <Compile Include="Controllers.fs" />
+    <Compile Include="Sutil.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fable.Haunted\Fable.Haunted.fsproj" />
+    <ProjectReference Include="..\..\src\Fable.Haunted.Lit\Fable.Haunted.Lit.fsproj" />
+    <ProjectReference Include="..\..\src\Fable.Haunted.Sutil\Fable.Haunted.Sutil.fsproj" />
   </ItemGroup>
-
 </Project>

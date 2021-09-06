@@ -4,8 +4,11 @@ open Browser.Types
 open Lit
 open Haunted
 open Haunted.Types
+open Haunted.Lit
 open Fable.Core
 open Controllers
+
+SutilSamples.registerCounter ()
 
 JsInterop.importSideEffects "./styles.css"
 
@@ -97,6 +100,7 @@ let private app () =
             <button @click="{fun _ -> dispatch Decrement}">Decrement</button>
             <button @click="{fun _ -> dispatch Reset}">Reset</button>
         </section>
+        <sutil-counter></sutil-counter>
         """
 
 defineComponent "fable-app" (Haunted.Component(app, {| useShadowDOM = false |}))
