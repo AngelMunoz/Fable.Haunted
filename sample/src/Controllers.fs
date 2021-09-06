@@ -72,8 +72,6 @@ type ClockController(host: ReactiveControllerHost, speed: int) as this =
                 (fun _ ->
                     this.time <- DateTime.Now
 
-                    printfn $"{this.time}"
-
                     host.requestUpdate ())
                 this.speed
             |> Some
@@ -86,7 +84,6 @@ type ClockController(host: ReactiveControllerHost, speed: int) as this =
                     (fun _ ->
                         this.time <- DateTime.Now
 
-                        printfn $"{this.time}"
 
                         host.requestUpdate ())
                     this.speed

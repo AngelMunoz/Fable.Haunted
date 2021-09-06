@@ -77,13 +77,9 @@ let private app () =
 
     let state, dispatch = Haunted.useReducer (elmishLike, 0)
 
-    let log =
-        Haunted.useCallback ((fun x -> printfn "%s" x), [| state |])
-
     let clockCtrl =
         Haunted.useController<ClockController> (fun host -> ClockController(host, 1000) :> ReactiveController)
 
-    log $"{state}"
 
     let complex =
         {| message = $"Complex object message value: {state}" |}
