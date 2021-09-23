@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "haunted": "https://cdn.skypack.dev/pin/haunted@v4.8.2-ZrPeH8YuLcWNIPQxstcw/mode=imports/optimized/haunted.js",
+    "lit": "https://cdn.skypack.dev/pin/lit@v2.0.0-fmIQPXLJVWh8dPhS7nD3/mode=imports/optimized/lit.js",
+    "lit-html": "https://cdn.skypack.dev/pin/lit-html@v2.0.0-kfI6Y9B9Hg1qgdLLWHKh/mode=imports/optimized/lit-html.js",
+    "lit-html/directives/": "https://ga.jspm.io/npm:lit-html@2.0.0-rc.5/directives/"
+  },
+  "scopes": {}
+}

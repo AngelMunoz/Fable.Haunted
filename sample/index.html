@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lit + Fable Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="fable.ico" />
+    <link rel="stylesheet" data-entry-point href="./src/styles.css" />
+    <script src="https://unpkg.com/construct-style-sheets-polyfill"></script>
+    <script
+      async
+      src="https://ga.jspm.io/npm:es-module-shims@1.0.0/dist/es-module-shims.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Firefox/Webkit css modules -->
+    <script>
+      window.esmsInitOptions = { polyfillEnable: ["css-modules"] };
+    </script>
+  </head>
+  <body>
+    <fable-app></fable-app>
+    <script data-entry-point type="module" src="./src/Main.fs.js"></script>
+  </body>
+</html>

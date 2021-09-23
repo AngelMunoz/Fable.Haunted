@@ -4,10 +4,7 @@ open Browser.Types
 open Lit
 open Haunted
 open Haunted.Types
-open Fable.Core
 open Controllers
-
-JsInterop.importSideEffects "./styles.css"
 
 type EventTarget with
     member this.Value = (this :?> HTMLInputElement).value
